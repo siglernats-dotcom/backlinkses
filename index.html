@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>600 Sitios para Backlinks | Calaveracode</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #060608;
+    --deep: #0c0c14;
+    --panel: #111120;
+    --border: #1e1e38;
+    --neon: #00ff88;
+    --neon2: #00d4ff;
+    --gold: #ffc940;
+    --purple: #9b5de5;
+    --red: #ff3c5f;
+    --white: #f0f0f8;
+    --gray: #6b6b8a;
+    --light: #a0a0c0;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* ── CUSTOM CURSOR ── */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--neon);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--neon);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, width 0.2s, height 0.2s, border-color 0.2s;
+    opacity: 0.5;
+  }
+  body:has(a:hover) .cursor { background: var(--gold); transform: translate(-50%,-50%) scale(1.5); }
+  body:has(a:hover) .cursor-ring { border-color: var(--gold); width: 50px; height: 50px; }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* ── SCANLINES ── */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+    pointer-events: none; z-index: 999;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+    padding: 18px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(6,6,8,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--neon);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo span { color: var(--white); }
+  .skull-icon { font-size: 20px; animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+  .nav-cta {
+    background: var(--neon);
+    color: var(--black);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 10px 24px;
+    text-decoration: none;
+    text-transform: uppercase;
+    clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold); transform: scale(1.04); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,255,136,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,136,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridMove 20s linear infinite;
+  }
+  @keyframes gridMove { from{background-position:0 0} to{background-position:60px 60px} }
+
+  .orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(80px); pointer-events: none;
+  }
+  .orb-1 { width: 500px; height: 500px; background: rgba(0,255,136,0.07); top: -100px; left: -200px; animation: float1 8s ease-in-out infinite; }
+  .orb-2 { width: 400px; height: 400px; background: rgba(0,212,255,0.06); bottom: -100px; right: -100px; animation: float2 10s ease-in-out infinite; }
+  .orb-3 { width: 300px; height: 300px; background: rgba(155,93,229,0.08); top: 40%; left: 60%; animation: float1 12s ease-in-out infinite reverse; }
+  @keyframes float1 { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-40px) scale(1.05)} }
+  @keyframes float2 { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(30px) scale(0.95)} }
+
+  .hero-content {
+    position: relative; z-index: 10;
+    max-width: 900px; text-align: center;
+  }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,255,136,0.1);
+    border: 1px solid rgba(0,255,136,0.3);
+    padding: 6px 18px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--neon);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    animation: fadeDown 0.8s ease both;
+  }
+  .badge-dot { width: 6px; height: 6px; background: var(--neon); border-radius: 50%; animation: blink 1.2s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+  .hero-skull {
+    font-size: 72px;
+    display: block;
+    margin-bottom: 16px;
+    animation: fadeDown 0.9s 0.1s ease both, skullRotate 4s ease-in-out infinite 1s;
+    filter: drop-shadow(0 0 30px rgba(0,255,136,0.4));
+  }
+  @keyframes skullRotate { 0%,100%{transform:rotate(-3deg)} 50%{transform:rotate(3deg)} }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(60px, 10vw, 110px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    margin-bottom: 28px;
+    animation: fadeDown 1s 0.2s ease both;
+  }
+  h1 .line1 { color: var(--white); display: block; }
+  h1 .line2 {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--neon);
+    display: block;
+    text-shadow: 0 0 40px rgba(0,255,136,0.3);
+  }
+  h1 .line3 { color: var(--gold); display: block; }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--light);
+    line-height: 1.7;
+    max-width: 620px;
+    margin: 0 auto 48px;
+    font-weight: 300;
+    animation: fadeDown 1s 0.4s ease both;
+  }
+  .hero-sub strong { color: var(--white); font-weight: 700; }
+
+  @keyframes fadeDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--neon);
+    color: var(--black);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    padding: 20px 52px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+    transition: transform 0.2s;
+    animation: fadeDown 1s 0.6s ease both;
+    box-shadow: 0 0 40px rgba(0,255,136,0.35), 0 0 80px rgba(0,255,136,0.1);
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+  }
+  .btn-primary:hover::before { transform: translateX(100%); }
+  .btn-primary:hover { transform: scale(1.04); box-shadow: 0 0 60px rgba(0,255,136,0.5), 0 0 100px rgba(0,255,136,0.15); }
+  .btn-arrow { font-size: 20px; }
+
+  .hero-note {
+    margin-top: 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 1px;
+    animation: fadeDown 1s 0.8s ease both;
+  }
+  .hero-note span { color: var(--neon); }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    position: relative; z-index: 10;
+    background: var(--panel);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 32px 48px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .stat-item {
+    text-align: center;
+    padding: 0 24px;
+    border-right: 1px solid var(--border);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--neon), var(--neon2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--gray);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section { padding: 100px 48px; max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--neon);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-tag::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
+  h2 em { color: var(--neon); font-style: normal; }
+
+  /* ── PROBLEMA ── */
+  .problem-section { background: var(--deep); }
+  .problem-inner { max-width: 1200px; margin: 0 auto; padding: 100px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .problem-text p { font-size: 17px; color: var(--light); line-height: 1.8; margin-bottom: 20px; }
+  .pain-list { list-style: none; margin-top: 32px; }
+  .pain-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px 0; border-bottom: 1px solid var(--border);
+    font-size: 15px; color: var(--light);
+  }
+  .pain-icon { color: var(--red); font-size: 18px; margin-top: 1px; flex-shrink: 0; }
+
+  .problem-visual {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .problem-visual::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--purple), var(--neon));
+  }
+  .rank-drop { display: flex; flex-direction: column; gap: 12px; }
+  .rank-row { display: flex; align-items: center; gap: 12px; }
+  .rank-label { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--gray); width: 80px; }
+  .rank-bar-bg { flex: 1; height: 10px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .rank-bar { height: 100%; border-radius: 2px; }
+  .rank-pos { font-family: 'Bebas Neue', sans-serif; font-size: 20px; width: 40px; text-align: right; }
+
+  /* ── WHAT YOU GET ── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+    background: var(--border);
+  }
+  .feature-card {
+    background: var(--panel);
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--neon);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .feature-card:hover { background: #161628; }
+  .feature-card:hover::before { transform: scaleX(1); }
+  .feature-icon { font-size: 36px; margin-bottom: 20px; display: block; }
+  .feature-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px; letter-spacing: 2px;
+    color: var(--white); margin-bottom: 12px;
+  }
+  .feature-desc { font-size: 14px; color: var(--light); line-height: 1.7; }
+  .feature-num {
+    position: absolute; bottom: 20px; right: 24px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px; color: rgba(255,255,255,0.04); line-height: 1;
+  }
+
+  /* ── PREVIEW TABLE ── */
+  .preview-section { background: var(--deep); padding: 100px 0; }
+  .preview-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+  .table-wrap { overflow: auto; margin-top: 48px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead th {
+    background: var(--panel);
+    padding: 16px 20px;
+    text-align: left;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--neon); border-bottom: 1px solid var(--border); white-space: nowrap;
+  }
+  tbody tr { border-bottom: 1px solid rgba(30,30,56,0.8); transition: background 0.15s; }
+  tbody tr:hover { background: rgba(0,255,136,0.03); }
+  tbody tr:nth-child(even) { background: rgba(17,17,32,0.5); }
+  tbody td { padding: 14px 20px; color: var(--light); white-space: nowrap; }
+  .td-site { color: var(--white); font-weight: 500; }
+  .td-url { color: var(--neon2); font-family: 'Space Mono', monospace; font-size: 12px; }
+  .badge-high { background: rgba(0,255,136,0.15); color: var(--neon); padding: 3px 10px; font-size: 11px; font-weight: 700; }
+  .badge-mid { background: rgba(255,201,64,0.15); color: var(--gold); padding: 3px 10px; font-size: 11px; font-weight: 700; }
+  .badge-free { background: rgba(0,212,255,0.12); color: var(--neon2); padding: 3px 10px; font-size: 11px; }
+  .badge-freemium { background: rgba(155,93,229,0.15); color: var(--purple); padding: 3px 10px; font-size: 11px; }
+  .table-blur { position: relative; }
+  .table-blur::after {
+    content: '🔒 Desbloquea los 600 sitios con acceso completo';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 200px;
+    background: linear-gradient(transparent, var(--deep));
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: 30px;
+    font-family: 'Space Mono', monospace; font-size: 13px;
+    color: var(--neon); letter-spacing: 1px;
+  }
+
+  /* ── CATEGORIES ── */
+  .cats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2px; margin-top: 48px; background: var(--border);
+  }
+  .cat-card { background: var(--panel); padding: 28px 24px; display: flex; flex-direction: column; gap: 8px; }
+  .cat-emoji { font-size: 28px; }
+  .cat-name { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--white); font-weight: 700; }
+  .cat-count { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--neon); line-height: 1; }
+  .cat-sub { font-size: 11px; color: var(--gray); }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--deep); padding: 100px 48px; }
+  .testi-inner { max-width: 1200px; margin: 0 auto; }
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; background: var(--border); }
+  .testi-card { background: var(--panel); padding: 40px 32px; position: relative; }
+  .testi-card::before { content: '"'; font-family: 'Bebas Neue', sans-serif; font-size: 100px; color: rgba(0,255,136,0.08); position: absolute; top: 10px; right: 24px; line-height: 1; }
+  .testi-text { font-size: 15px; color: var(--light); line-height: 1.8; margin-bottom: 28px; }
+  .testi-author { display: flex; align-items: center; gap: 14px; }
+  .testi-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--neon), var(--purple));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: var(--black);
+  }
+  .testi-name { font-weight: 700; font-size: 14px; }
+  .testi-role { font-size: 12px; color: var(--gray); margin-top: 2px; }
+  .stars { color: var(--gold); font-size: 12px; margin-bottom: 4px; }
+
+  /* ── PRICING ── */
+  .pricing-section { padding: 100px 48px; }
+  .pricing-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+  .price-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 60px 48px;
+    position: relative; overflow: hidden; margin-top: 48px;
+  }
+  .price-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--neon), var(--neon2), var(--purple));
+  }
+  .price-glow {
+    position: absolute; top: -80px; left: 50%;
+    transform: translateX(-50%);
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(0,255,136,0.12), transparent 70%);
+    border-radius: 50%;
+  }
+  .price-tag {
+    font-family: 'Space Mono', monospace; font-size: 11px;
+    color: var(--neon); letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 20px; display: inline-block;
+    background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.25); padding: 5px 16px;
+  }
+  .price-old { font-size: 20px; color: var(--gray); text-decoration: line-through; margin-bottom: 8px; }
+  .price-main {
+    font-family: 'Bebas Neue', sans-serif; font-size: 96px; line-height: 1;
+    background: linear-gradient(135deg, var(--neon), var(--neon2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    margin-bottom: 8px;
+  }
+  .price-currency { font-size: 40px; vertical-align: super; }
+  .price-period { font-size: 14px; color: var(--gray); margin-bottom: 40px; font-family: 'Space Mono', monospace; }
+  .price-features { list-style: none; text-align: left; margin-bottom: 40px; }
+  .price-features li {
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px;
+    font-size: 15px; color: var(--light);
+  }
+  .price-features li:last-child { border-bottom: none; }
+  .check { color: var(--neon); font-size: 16px; flex-shrink: 0; }
+
+  .btn-buy {
+    display: inline-flex; align-items: center; justify-content: center; gap: 14px;
+    width: 100%;
+    background: var(--neon);
+    color: var(--black);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px; letter-spacing: 4px;
+    padding: 24px 48px;
+    text-decoration: none;
+    clip-path: polygon(14px 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 40px rgba(0,255,136,0.4);
+    position: relative; overflow: hidden;
+  }
+  .btn-buy::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transform: translateX(-100%); transition: transform 0.6s;
+  }
+  .btn-buy:hover::after { transform: translateX(100%); }
+  .btn-buy:hover { transform: scale(1.02); box-shadow: 0 0 60px rgba(0,255,136,0.6); }
+
+  .price-guarantee {
+    margin-top: 24px; font-size: 12px; color: var(--gray);
+    font-family: 'Space Mono', monospace; letter-spacing: 1px;
+  }
+  .price-guarantee span { color: var(--neon); }
+
+  /* ── FAQ ── */
+  .faq-section { background: var(--deep); padding: 100px 48px; }
+  .faq-inner { max-width: 800px; margin: 0 auto; }
+  .faq-list { margin-top: 48px; }
+  .faq-item { border-bottom: 1px solid var(--border); overflow: hidden; }
+  .faq-q {
+    padding: 24px 0;
+    display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer;
+    font-size: 16px; font-weight: 500; color: var(--white);
+    transition: color 0.2s;
+    user-select: none;
+  }
+  .faq-q:hover { color: var(--neon); }
+  .faq-toggle {
+    width: 28px; height: 28px; flex-shrink: 0;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; color: var(--neon);
+    transition: transform 0.3s, background 0.2s;
+  }
+  .faq-item.open .faq-toggle { transform: rotate(45deg); background: rgba(0,255,136,0.1); }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    font-size: 15px; color: var(--light); line-height: 1.8;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding-bottom: 24px; }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    padding: 120px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: '☠';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(100px, 25vw, 220px);
+    color: rgba(0,255,136,0.03);
+    pointer-events: none; line-height: 1;
+  }
+  .final-cta h2 { font-size: clamp(48px, 8vw, 96px); margin-bottom: 24px; }
+  .final-cta p { font-size: 18px; color: var(--light); max-width: 520px; margin: 0 auto 48px; line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    border-top: 1px solid var(--border);
+    padding: 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 20px;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 22px;
+    letter-spacing: 3px; color: var(--neon);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .footer-copy { font-size: 13px; color: var(--gray); font-family: 'Space Mono', monospace; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 13px; color: var(--gray); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--neon); }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── TRANSLATE BUTTON ── */
+  #lang-toggle {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9990;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--panel);
+    border: 1px solid var(--neon);
+    color: var(--neon);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    cursor: pointer;
+    clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    box-shadow: 0 0 24px rgba(0,255,136,0.2);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+  }
+  #lang-toggle:hover {
+    background: rgba(0,255,136,0.1);
+    box-shadow: 0 0 40px rgba(0,255,136,0.4);
+    transform: scale(1.05);
+  }
+  #lang-toggle .lg-flag { font-size: 16px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); padding: 24px; }
+    .stat-item:nth-child(2) { border-right: none; }
+    .problem-inner { grid-template-columns: 1fr; padding: 60px 24px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .section { padding: 60px 24px; }
+    .pricing-section { padding: 60px 24px; }
+    .price-card { padding: 40px 28px; }
+    .faq-section { padding: 60px 24px; }
+    .final-cta { padding: 80px 24px; }
+    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+    .preview-inner { padding: 0 24px; }
+    .testimonials { padding: 60px 24px; }
+    .cats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- TRANSLATE BUTTON -->
+<button id="lang-toggle" onclick="toggleLang()">
+  <span class="lg-flag" id="lang-flag">🇺🇸</span>
+  <span id="lang-label">EN</span>
+</button>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="skull-icon">☠</span>
+    CALAVERA<span>CODE</span>
+  </div>
+  <a href="https://payhip.com/b/1gA8j" class="nav-cta" target="_blank">OBTENER AHORA →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="hero-content">
+    <div class="badge"><span class="badge-dot"></span>Lista Premium · Edición 2026 · Descarga Inmediata</div>
+    <span class="hero-skull">☠</span>
+    <h1>
+      <span class="line1">600 SITIOS PARA</span>
+      <span class="line2">BACKLINKS</span>
+      <span class="line3">DE AUTORIDAD</span>
+    </h1>
+    <p class="hero-sub">La lista más completa del mercado con <strong>600 plataformas verificadas</strong> donde puedes insertar backlinks y disparar tu posicionamiento en Google. Clasificadas por categoría, autoridad y tipo de acceso.</p>
+    <a href="https://payhip.com/b/1gA8j" class="btn-primary" target="_blank">☠ DESCARGAR AHORA <span class="btn-arrow">→</span></a>
+    <p class="hero-note">✓ Descarga inmediata &nbsp;·&nbsp; <span>✓ 600+ sitios verificados</span> &nbsp;·&nbsp; ✓ PDF listo para usar</p>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num" id="cnt1">600+</div><div class="stat-label">Sitios verificados</div></div>
+  <div class="stat-item"><div class="stat-num" id="cnt2">40+</div><div class="stat-label">Categorías</div></div>
+  <div class="stat-item"><div class="stat-num">DA90</div><div class="stat-label">Autoridad máxima</div></div>
+  <div class="stat-item"><div class="stat-num">2026</div><div class="stat-label">Actualizado</div></div>
+</div>
+
+<!-- PROBLEMA -->
+<div class="problem-section">
+  <div class="problem-inner">
+    <div class="problem-text reveal">
+      <div class="section-tag">El problema</div>
+      <h2>¿Tu sitio no aparece en <em>Google?</em></h2>
+      <p>El 90% de las páginas web nunca reciben tráfico orgánico. La razón principal: falta de backlinks de calidad. Sin enlaces que apunten a tu sitio, Google simplemente ignora tu contenido.</p>
+      <p>Pasar horas buscando dónde insertar backlinks, probar sitios que ya no funcionan, o invertir en estrategias caras de outreach... es tiempo y dinero que nadie tiene de sobra.</p>
+      <ul class="pain-list">
+        <li><span class="pain-icon">✗</span> Búsquedas interminables en Google sin resultados útiles</li>
+        <li><span class="pain-icon">✗</span> Sitios desactualizados o con spam que penalizan tu dominio</li>
+        <li><span class="pain-icon">✗</span> Agencias que cobran miles por lo que puedes hacer tú mismo</li>
+        <li><span class="pain-icon">✗</span> Sin backlinks = sin autoridad = sin rankings</li>
+      </ul>
+    </div>
+    <div class="problem-visual reveal">
+      <div class="section-tag" style="margin-bottom:24px;">Sin backlinks</div>
+      <div class="rank-drop">
+        <div class="rank-row"><span class="rank-label">Posición</span><div class="rank-bar-bg"><div class="rank-bar" style="width:15%;background:var(--red);"></div></div><span class="rank-pos" style="color:var(--red)">#47</span></div>
+        <div class="rank-row"><span class="rank-label">Tráfico</span><div class="rank-bar-bg"><div class="rank-bar" style="width:8%;background:var(--red);"></div></div><span class="rank-pos" style="color:var(--red);font-size:14px">Bajo</span></div>
+        <div class="rank-row"><span class="rank-label">Autoridad</span><div class="rank-bar-bg"><div class="rank-bar" style="width:5%;background:var(--red);"></div></div><span class="rank-pos" style="color:var(--red);font-size:14px">DA 2</span></div>
+      </div>
+      <div style="margin:32px 0;height:1px;background:var(--border);position:relative;">
+        <span style="position:absolute;left:50%;transform:translateX(-50%) translateY(-50%);background:var(--panel);padding:0 12px;font-family:'Space Mono',monospace;font-size:10px;color:var(--neon);">CON 600 BACKLINKS</span>
+      </div>
+      <div class="rank-drop">
+        <div class="rank-row"><span class="rank-label">Posición</span><div class="rank-bar-bg"><div class="rank-bar" style="width:95%;background:var(--neon);"></div></div><span class="rank-pos" style="color:var(--neon)">#1</span></div>
+        <div class="rank-row"><span class="rank-label">Tráfico</span><div class="rank-bar-bg"><div class="rank-bar" style="width:88%;background:var(--neon);"></div></div><span class="rank-pos" style="color:var(--neon);font-size:14px">Alto</span></div>
+        <div class="rank-row"><span class="rank-label">Autoridad</span><div class="rank-bar-bg"><div class="rank-bar" style="width:80%;background:var(--neon);"></div></div><span class="rank-pos" style="color:var(--neon);font-size:14px">DA 45</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT YOU GET -->
+<section class="section">
+  <div class="section-tag">Lo que recibes</div>
+  <h2>Todo lo que necesitas para <em>dominar</em> el SEO</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <span class="feature-icon">📋</span>
+      <div class="feature-title">Lista de 600 sitios</div>
+      <p class="feature-desc">Cada sitio verificado manualmente. Incluye nombre, URL directa, categoría, nivel de autoridad de dominio y tipo de acceso.</p>
+      <span class="feature-num">01</span>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🗂️</span>
+      <div class="feature-title">40+ categorías</div>
+      <p class="feature-desc">Foros, directorios, redes sociales, Q&A, blogs, wikis, clasificados, podcasts, educación, tech, finanzas, crypto y mucho más.</p>
+      <span class="feature-num">02</span>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">⚡</span>
+      <div class="feature-title">Acceso inmediato</div>
+      <p class="feature-desc">PDF profesional descargable al instante. Sin esperas, sin suscripciones. Tuyo para siempre con licencia de uso ilimitado.</p>
+      <span class="feature-num">03</span>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🔍</span>
+      <div class="feature-title">Autoridad clasificada</div>
+      <p class="feature-desc">Cada sitio etiquetado con nivel de autoridad: Alta (DA 50+), Media (DA 20-50) y Baja. Prioriza los que más impacto generan.</p>
+      <span class="feature-num">04</span>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">💰</span>
+      <div class="feature-title">Gratuitos y freemium</div>
+      <p class="feature-desc">La mayoría de los sitios son completamente gratuitos o freemium. Maximiza tu ROI sin gastar en outreach costoso.</p>
+      <span class="feature-num">05</span>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🌎</span>
+      <div class="feature-title">Sitios en español</div>
+      <p class="feature-desc">Incluye plataformas hispanohablantes: Taringa, Forobeta, Meneame, Domestika y más para apuntar al mercado LATAM y España.</p>
+      <span class="feature-num">06</span>
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW TABLE -->
+<div class="preview-section">
+  <div class="preview-inner">
+    <div class="section-tag">Vista previa</div>
+    <h2>Una muestra de lo que <em>encontrarás</em></h2>
+    <div class="table-blur">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Sitio / Plataforma</th><th>URL</th><th>Categoría</th><th>Autoridad</th><th>Acceso</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td class="td-site">Reddit</td><td class="td-url">reddit.com</td><td>Foro</td><td><span class="badge-high">Alta</span></td><td><span class="badge-free">Gratuito</span></td></tr>
+            <tr><td>2</td><td class="td-site">Medium</td><td class="td-url">medium.com</td><td>Blog</td><td><span class="badge-high">Alta</span></td><td><span class="badge-freemium">Freemium</span></td></tr>
+            <tr><td>3</td><td class="td-site">Quora</td><td class="td-url">quora.com</td><td>Q&A</td><td><span class="badge-high">Alta</span></td><td><span class="badge-free">Gratuito</span></td></tr>
+            <tr><td>4</td><td class="td-site">LinkedIn</td><td class="td-url">linkedin.com</td><td>Red Social</td><td><span class="badge-high">Alta</span></td><td><span class="badge-freemium">Freemium</span></td></tr>
+            <tr><td>5</td><td class="td-site">SlideShare</td><td class="td-url">slideshare.net</td><td>Documentos</td><td><span class="badge-high">Alta</span></td><td><span class="badge-freemium">Freemium</span></td></tr>
+            <tr><td>6</td><td class="td-site">Dev.to</td><td class="td-url">dev.to</td><td>Blog Tech</td><td><span class="badge-high">Alta</span></td><td><span class="badge-free">Gratuito</span></td></tr>
+            <tr><td>7</td><td class="td-site">Hacker News</td><td class="td-url">news.ycombinator.com</td><td>Tech/Startups</td><td><span class="badge-high">Alta</span></td><td><span class="badge-free">Gratuito</span></td></tr>
+            <tr><td>8</td><td class="td-site">Diigo</td><td class="td-url">diigo.com</td><td>Marcadores</td><td><span class="badge-high">Alta</span></td><td><span class="badge-free">Gratuito</span></td></tr>
+            <tr><td>9</td><td class="td-site">Product Hunt</td><td class="td-url">producthunt.com</td><td>Startups</td><td><span class="badge-high">Alta</span></td><td><span class="badge-free">Gratuito</span></td></tr>
+            <tr><td>10</td><td class="td-site">Taringa</td><td class="td-url">taringa.net</td><td>Comunidad LATAM</td><td><span class="badge-high">Alta</span></td><td><span class="badge-free">Gratuito</span></td></tr>
+            <tr><td>11</td><td class="td-site">Scribd</td><td class="td-url">scribd.com</td><td>Documentos</td><td><span class="badge-high">Alta</span></td><td><span class="badge-freemium">Freemium</span></td></tr>
+            <tr><td>12</td><td class="td-site">Substack</td><td class="td-url">substack.com</td><td>Newsletter</td><td><span class="badge-high">Alta</span></td><td><span class="badge-freemium">Freemium</span></td></tr>
+            <tr><td>13</td><td class="td-site">Academia.edu</td><td class="td-url">academia.edu</td><td>Académico</td><td><span class="badge-high">Alta</span></td><td><span class="badge-freemium">Freemium</span></td></tr>
+            <tr><td>14</td><td class="td-site">Forobeta</td><td class="td-url">forobeta.com</td><td>Marketing LATAM</td><td><span class="badge-mid">Media</span></td><td><span class="badge-free">Gratuito</span></td></tr>
+            <tr><td>15</td><td class="td-site">Issuu</td><td class="td-url">issuu.com</td><td>Publicaciones</td><td><span class="badge-high">Alta</span></td><td><span class="badge-freemium">Freemium</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:24px;">
+      <a href="https://payhip.com/b/1gA8j" class="btn-primary" target="_blank" style="display:inline-flex;">🔓 VER LOS 600 SITIOS COMPLETOS →</a>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="section reveal">
+  <div class="section-tag">Categorías incluidas</div>
+  <h2>Cobertura <em>total</em> de nichos</h2>
+  <div class="cats-grid">
+    <div class="cat-card"><span class="cat-emoji">💬</span><div class="cat-name">Foros & Comunidades</div><div class="cat-count">35+</div><div class="cat-sub">sitios</div></div>
+    <div class="cat-card"><span class="cat-emoji">📂</span><div class="cat-name">Directorios Web</div><div class="cat-count">40+</div><div class="cat-sub">sitios</div></div>
+    <div class="cat-card"><span class="cat-emoji">📱</span><div class="cat-name">Redes Sociales</div><div class="cat-count">25+</div><div class="cat-sub">sitios</div></div>
+    <div class="cat-card"><span class="cat-emoji">❓</span><div class="cat-name">Q&A Platforms</div><div class="cat-count">15+</div><div class="cat-sub">sitios</div></div>
+    <div class="cat-card"><span class="cat-emoji">✍️</span><div class="cat-name">Blogs & Artículos</div><div class="cat-count">30+</div><div class="cat-sub">sitios</div></div>
+    <div class="cat-card"><span class="cat-emoji">💼</span><div class="cat-name">Negocios & B2B</div><div class="cat-count">25+</div><div class="cat-sub">sitios</div></div>
+    <div class="cat-card"><span class="cat-emoji">🖥️</span><div class="cat-name">Tech & Desarrollo</div><div class="cat-count">40+</div><div class="cat-sub">sitios</div></div>
+    <div class="cat-card"><span class="cat-emoji">🪙</span><div class="cat-name">Crypto & Blockchain</div><div class="cat-count">10+</div><div class="cat-sub">sitios</div></div>
+    <div class="cat-card"><span class="cat-emoji">🎓</span><div class="cat-name">Educación & LMS</div><div class="cat-count">25+</div><div class="cat-sub">sitios</div></div>
+    <div class="cat-card"><span class="cat-emoji">🛒</span><div class="cat-name">Ecommerce</div><div class="cat-count">15+</div><div class="cat-sub">sitios</div></div>
+    <div class="cat-card"><span class="cat-emoji">🌎</span><div class="cat-name">LATAM & Español</div><div class="cat-count">20+</div><div class="cat-sub">sitios</div></div>
+    <div class="cat-card"><span class="cat-emoji">📰</span><div class="cat-name">Prensa & PR</div><div class="cat-count">15+</div><div class="cat-sub">sitios</div></div>
+    <div class="cat-card"><span class="cat-emoji">🤖</span><div class="cat-name">IA & Machine Learning</div><div class="cat-count">10+</div><div class="cat-sub">sitios</div></div>
+    <div class="cat-card"><span class="cat-emoji">🎮</span><div class="cat-name">Gaming</div><div class="cat-count">10+</div><div class="cat-sub">sitios</div></div>
+    <div class="cat-card"><span class="cat-emoji">🏠</span><div class="cat-name">Inmobiliario</div><div class="cat-count">10+</div><div class="cat-sub">sitios</div></div>
+    <div class="cat-card"><span class="cat-emoji">➕</span><div class="cat-name">Mucho más…</div><div class="cat-count">25+</div><div class="cat-sub">categorías adicionales</div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<div class="testimonials">
+  <div class="testi-inner">
+    <div class="section-tag">Testimonios</div>
+    <h2>Lo que dicen quienes ya <em>rankean</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">Llevaba meses estancado en la página 3 de Google. Después de usar esta lista durante 6 semanas, subí al top 5 en mis 3 keywords principales. Una inversión brutal.</p>
+        <div class="testi-author"><div class="testi-avatar">MR</div><div><div class="testi-name">Miguel R.</div><div class="testi-role">Agencia SEO · Ciudad de México</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">Trabajo como freelancer de SEO y esta lista me ahorró semanas de investigación. La uso con todos mis clientes. El retorno es increíble comparado con el precio.</p>
+        <div class="testi-author"><div class="testi-avatar">LC</div><div><div class="testi-name">Laura C.</div><div class="testi-role">SEO Freelancer · España</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">Pensé que era otro PDF genérico pero los sitios están bien curados y clasificados. Mi DA pasó de 8 a 31 en 3 meses usando solo sitios gratuitos de esta lista.</p>
+        <div class="testi-author"><div class="testi-avatar">JV</div><div><div class="testi-name">Josué V.</div><div class="testi-role">Blogger · Colombia</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="pricing-section">
+  <div class="pricing-inner">
+    <div class="section-tag" style="justify-content:center;text-align:center">Precio</div>
+    <h2 style="text-align:center">Una inversión, <em>resultados</em> para siempre</h2>
+    <div class="price-card">
+      <div class="price-glow"></div>
+      <div class="price-tag">☠ ACCESO COMPLETO · PAGO ÚNICO</div>
+      <div class="price-old">Valor real: $97 USD</div>
+      <div class="price-main"><span class="price-currency">$</span>27</div>
+      <div class="price-period">USD · PAGO ÚNICO · DESCARGA INMEDIATA</div>
+      <ul class="price-features">
+        <li><span class="check">✓</span> Lista completa de 600+ sitios verificados</li>
+        <li><span class="check">✓</span> 40+ categorías bien organizadas</li>
+        <li><span class="check">✓</span> Nivel de autoridad por sitio (DA)</li>
+        <li><span class="check">✓</span> Tipo de acceso: gratuito / freemium / pago</li>
+        <li><span class="check">✓</span> Plataformas en español para mercado LATAM</li>
+        <li><span class="check">✓</span> PDF profesional descargable al instante</li>
+        <li><span class="check">✓</span> 5 tips de link building de experto incluidos</li>
+        <li><span class="check">✓</span> Acceso de por vida · Sin suscripción</li>
+      </ul>
+      <a href="https://payhip.com/b/1gA8j" class="btn-buy" target="_blank">☠ OBTENER ACCESO COMPLETO →</a>
+      <p class="price-guarantee">🔒 Pago seguro via Payhip &nbsp;·&nbsp; <span>Descarga inmediata</span> &nbsp;·&nbsp; Acceso de por vida</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="faq-inner">
+    <div class="section-tag">Preguntas frecuentes</div>
+    <h2>Resuelve tus <em>dudas</em></h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q">¿Cómo recibo el PDF después de comprar? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Inmediatamente después del pago recibirás acceso a la descarga del PDF a través de Payhip. También te llegará un correo con el enlace de descarga permanente.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">¿Los sitios están actualizados para 2026? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Sí. La lista fue curada y verificada en 2026. Incluye plataformas activas y relevantes, con especial atención a sitios con alta autoridad de dominio que sigan aceptando contenido generado por usuarios.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">¿Funciona para cualquier nicho o industria? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Absolutamente. La lista incluye plataformas generalistas (Reddit, Quora, Medium) y nichos específicos (tech, finanzas, salud, inmobiliario, gaming, moda, etc.). Hay sitios relevantes para prácticamente cualquier industria.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">¿Puedo usar esta lista para mis clientes? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Sí, la licencia incluye uso personal y profesional. Puedes usarla en tus propios proyectos y en los proyectos SEO de tus clientes sin limitaciones.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">¿Son backlinks dofollow o nofollow? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">La lista incluye ambos tipos. Los backlinks nofollow también tienen valor para una estrategia de link building natural. En el PDF se incluyen tips para identificar cuáles priorizan dofollow.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">¿Qué forma de pago aceptan? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">El pago se procesa a través de Payhip, que acepta tarjetas de crédito/débito (Visa, Mastercard, Amex), PayPal y más. Es 100% seguro con encriptación SSL.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="section-tag" style="justify-content:center">Últ. llamada</div>
+  <h2>Empieza a <em>rankear</em> hoy</h2>
+  <p>Cada día que pasa sin backlinks es un día que tu competencia te lleva ventaja. Obtén los 600 sitios ahora y empieza hoy mismo.</p>
+  <a href="https://payhip.com/b/1gA8j" class="btn-primary" target="_blank" style="font-size:24px;padding:24px 60px;">☠ DESCARGAR POR $27 →</a>
+  <p style="margin-top:20px;font-family:'Space Mono',monospace;font-size:11px;color:var(--gray);">Pago único · Sin suscripción · Acceso de por vida</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">☠ CALAVERA<span style="color:var(--white)">CODE</span></div>
+  <div class="footer-copy">© 2026 Calaveracode · Todos los derechos reservados</div>
+  <div class="footer-links">
+    <a href="https://payhip.com/b/1gA8j" target="_blank">Comprar</a>
+    <a href="/cdn-cgi/l/email-protection#20434f4e544143544f6043414c4156455241434f44450e434f4d">Contacto</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── CURSOR ──
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function animateCursor() {
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // ── FAQ ──
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // ── SCROLL REVEAL ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ── COUNTER ANIMATION ──
+  function animateCounter(el, target, suffix = '') {
+    let current = 0;
+    const step = target / (1500 / 16);
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current) + suffix;
+    }, 16);
+  }
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(document.getElementById('cnt1'), 600, '+');
+        animateCounter(document.getElementById('cnt2'), 40, '+');
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.stat-item').forEach(el => statsObserver.observe(el));
+
+  // ── TRANSLATION SYSTEM ──
+  let currentLang = 'es';
+
+  const T = {
+    es: {
+      htmlLang: 'es',
+      btnFlag: '🇺🇸', btnLabel: 'EN',
+      navCta: 'OBTENER AHORA →',
+      badgeText: 'Lista Premium · Edición 2026 · Descarga Inmediata',
+      h1Line1: '600 SITIOS PARA',
+      h1Line2: 'BACKLINKS',
+      h1Line3: 'DE AUTORIDAD',
+      heroSub: 'La lista más completa del mercado con <strong>600 plataformas verificadas</strong> donde puedes insertar backlinks y disparar tu posicionamiento en Google. Clasificadas por categoría, autoridad y tipo de acceso.',
+      heroBtnText: '☠ DESCARGAR AHORA',
+      heroNote: '✓ Descarga inmediata &nbsp;·&nbsp; <span style="color:var(--neon)">✓ 600+ sitios verificados</span> &nbsp;·&nbsp; ✓ PDF listo para usar',
+      statLabel1: 'Sitios verificados', statLabel2: 'Categorías', statLabel3: 'Autoridad máxima', statLabel4: 'Actualizado',
+      sectionTagProblem: 'El problema',
+      h2Problem: '¿Tu sitio no aparece en <em>Google?</em>',
+      problemP1: 'El 90% de las páginas web nunca reciben tráfico orgánico. La razón principal: falta de backlinks de calidad. Sin enlaces que apunten a tu sitio, Google simplemente ignora tu contenido.',
+      problemP2: 'Pasar horas buscando dónde insertar backlinks, probar sitios que ya no funcionan, o invertir en estrategias caras de outreach... es tiempo y dinero que nadie tiene de sobra.',
+      pain1: 'Búsquedas interminables en Google sin resultados útiles',
+      pain2: 'Sitios desactualizados o con spam que penalizan tu dominio',
+      pain3: 'Agencias que cobran miles por lo que puedes hacer tú mismo',
+      pain4: 'Sin backlinks = sin autoridad = sin rankings',
+      sectionTagNoBacklinks: 'Sin backlinks',
+      rankPos: 'Posición', rankTraffic: 'Tráfico', rankAuth: 'Autoridad',
+      rankLow: 'Bajo', rankHigh: 'Alto',
+      with600: 'CON 600 BACKLINKS',
+      sectionTagGet: 'Lo que recibes',
+      h2Get: 'Todo lo que necesitas para <em>dominar</em> el SEO',
+      featTitles: ['Lista de 600 sitios','40+ categorías','Acceso inmediato','Autoridad clasificada','Gratuitos y freemium','Sitios en español'],
+      featDescs: [
+        'Cada sitio verificado manualmente. Incluye nombre, URL directa, categoría, nivel de autoridad de dominio y tipo de acceso.',
+        'Foros, directorios, redes sociales, Q&A, blogs, wikis, clasificados, podcasts, educación, tech, finanzas, crypto y mucho más.',
+        'PDF profesional descargable al instante. Sin esperas, sin suscripciones. Tuyo para siempre con licencia de uso ilimitado.',
+        'Cada sitio etiquetado con nivel de autoridad: Alta (DA 50+), Media (DA 20-50) y Baja. Prioriza los que más impacto generan.',
+        'La mayoría de los sitios son completamente gratuitos o freemium. Maximiza tu ROI sin gastar en outreach costoso.',
+        'Incluye plataformas hispanohablantes: Taringa, Forobeta, Meneame, Domestika y más para apuntar al mercado LATAM y España.'
+      ],
+      sectionTagPreview: 'Vista previa',
+      h2Preview: 'Una muestra de lo que <em>encontrarás</em>',
+      thCols: ['#','Sitio / Plataforma','URL','Categoría','Autoridad','Acceso'],
+      tdCats: ['Foro','Blog','Q&A','Red Social','Documentos','Blog Tech','Tech/Startups','Marcadores','Startups','Comunidad LATAM','Documentos','Newsletter','Académico','Marketing LATAM','Publicaciones'],
+      badgeHigh: 'Alta', badgeMid: 'Media', badgeFree: 'Gratuito', badgeFreemium: 'Freemium',
+      tableBlur: '🔒 Desbloquea los 600 sitios con acceso completo',
+      btnUnlock: '🔓 VER LOS 600 SITIOS COMPLETOS →',
+      sectionTagCats: 'Categorías incluidas',
+      h2Cats: 'Cobertura <em>total</em> de nichos',
+      catNames: ['Foros & Comunidades','Directorios Web','Redes Sociales','Q&A Platforms','Blogs & Artículos','Negocios & B2B','Tech & Desarrollo','Crypto & Blockchain','Educación & LMS','Ecommerce','LATAM & Español','Salud & Bienestar','Finanzas & Inversión','Moda & Lifestyle','Viajes & Turismo','Prensa & PR','IA & Machine Learning','Gaming','Inmobiliario','Mucho más…'],
+      catSub: 'sitios', catSubLast: 'categorías adicionales',
+      sectionTagTesti: 'Testimonios',
+      h2Testi: 'Lo que dicen quienes ya <em>rankean</em>',
+      testiTexts: [
+        'Llevaba meses estancado en la página 3 de Google. Después de usar esta lista durante 6 semanas, subí al top 5 en mis 3 keywords principales. Una inversión brutal.',
+        'Trabajo como freelancer de SEO y esta lista me ahorró semanas de investigación. La uso con todos mis clientes. El retorno es increíble comparado con el precio.',
+        'Pensé que era otro PDF genérico pero los sitios están bien curados y clasificados. Mi DA pasó de 8 a 31 en 3 meses usando solo sitios gratuitos de esta lista.'
+      ],
+      testiRoles: ['Agencia SEO · Ciudad de México','SEO Freelancer · España','Blogger · Colombia'],
+      sectionTagPrice: 'Precio',
+      h2Price: 'Una inversión, <em>resultados</em> para siempre',
+      priceTag: '☠ ACCESO COMPLETO · PAGO ÚNICO',
+      priceOld: 'Valor real: $97 USD',
+      pricePeriod: 'USD · PAGO ÚNICO · DESCARGA INMEDIATA',
+      priceFeats: [
+        'Lista completa de 600+ sitios verificados',
+        '40+ categorías bien organizadas',
+        'Nivel de autoridad por sitio (DA)',
+        'Tipo de acceso: gratuito / freemium / pago',
+        'Plataformas en español para mercado LATAM',
+        'PDF profesional descargable al instante',
+        '5 tips de link building de experto incluidos',
+        'Acceso de por vida · Sin suscripción'
+      ],
+      btnBuy: '☠ OBTENER ACCESO COMPLETO →',
+      priceGuarantee: '🔒 Pago seguro via Payhip &nbsp;·&nbsp; <span style="color:var(--neon)">Descarga inmediata</span> &nbsp;·&nbsp; Acceso de por vida',
+      sectionTagFaq: 'Preguntas frecuentes',
+      h2Faq: 'Resuelve tus <em>dudas</em>',
+      faqQs: [
+        '¿Cómo recibo el PDF después de comprar?',
+        '¿Los sitios están actualizados para 2026?',
+        '¿Funciona para cualquier nicho o industria?',
+        '¿Puedo usar esta lista para mis clientes?',
+        '¿Son backlinks dofollow o nofollow?',
+        '¿Qué forma de pago aceptan?'
+      ],
+      faqAs: [
+        'Inmediatamente después del pago recibirás acceso a la descarga del PDF a través de Payhip. También te llegará un correo con el enlace de descarga permanente.',
+        'Sí. La lista fue curada y verificada en 2026. Incluye plataformas activas y relevantes, con especial atención a sitios con alta autoridad de dominio que sigan aceptando contenido generado por usuarios.',
+        'Absolutamente. La lista incluye plataformas generalistas (Reddit, Quora, Medium) y nichos específicos (tech, finanzas, salud, inmobiliario, gaming, moda, etc.). Hay sitios relevantes para prácticamente cualquier industria.',
+        'Sí, la licencia incluye uso personal y profesional. Puedes usarla en tus propios proyectos y en los proyectos SEO de tus clientes sin limitaciones.',
+        'La lista incluye ambos tipos. Los backlinks nofollow también tienen valor para una estrategia de link building natural. En el PDF se incluyen tips para identificar cuáles priorizan dofollow.',
+        'El pago se procesa a través de Payhip, que acepta tarjetas de crédito/débito (Visa, Mastercard, Amex), PayPal y más. Es 100% seguro con encriptación SSL.'
+      ],
+      sectionTagCta: 'Últ. llamada',
+      h2Cta: 'Empieza a <em>rankear</em> hoy',
+      ctaP: 'Cada día que pasa sin backlinks es un día que tu competencia te lleva ventaja. Obtén los 600 sitios ahora y empieza hoy mismo.',
+      btnFinal: '☠ DESCARGAR POR $27 →',
+      ctaNote: 'Pago único · Sin suscripción · Acceso de por vida',
+      footerCopy: '© 2026 Calaveracode · Todos los derechos reservados',
+      footerBuy: 'Comprar', footerContact: 'Contacto'
+    },
+    en: {
+      htmlLang: 'en',
+      btnFlag: '🇲🇽', btnLabel: 'ES',
+      navCta: 'GET IT NOW →',
+      badgeText: 'Premium List · 2026 Edition · Instant Download',
+      h1Line1: '600 SITES FOR',
+      h1Line2: 'BACKLINKS',
+      h1Line3: 'WITH AUTHORITY',
+      heroSub: 'The most complete list on the market with <strong>600 verified platforms</strong> where you can insert backlinks and skyrocket your Google rankings. Classified by category, authority, and access type.',
+      heroBtnText: '☠ DOWNLOAD NOW',
+      heroNote: '✓ Instant download &nbsp;·&nbsp; <span style="color:var(--neon)">✓ 600+ verified sites</span> &nbsp;·&nbsp; ✓ PDF ready to use',
+      statLabel1: 'Verified sites', statLabel2: 'Categories', statLabel3: 'Max authority', statLabel4: 'Updated',
+      sectionTagProblem: 'The problem',
+      h2Problem: 'Is your site not showing on <em>Google?</em>',
+      problemP1: '90% of websites never receive organic traffic. The main reason: lack of quality backlinks. Without links pointing to your site, Google simply ignores your content.',
+      problemP2: 'Spending hours searching for backlink opportunities, testing sites that no longer work, or investing in expensive outreach strategies… is time and money nobody has to spare.',
+      pain1: 'Endless Google searches with no useful results',
+      pain2: 'Outdated or spammy sites that penalize your domain',
+      pain3: 'Agencies charging thousands for what you can do yourself',
+      pain4: 'No backlinks = no authority = no rankings',
+      sectionTagNoBacklinks: 'Without backlinks',
+      rankPos: 'Position', rankTraffic: 'Traffic', rankAuth: 'Authority',
+      rankLow: 'Low', rankHigh: 'High',
+      with600: 'WITH 600 BACKLINKS',
+      sectionTagGet: 'What you get',
+      h2Get: 'Everything you need to <em>dominate</em> SEO',
+      featTitles: ['List of 600 sites','40+ categories','Instant access','Classified authority','Free and freemium','Spanish-language sites'],
+      featDescs: [
+        'Every site manually verified. Includes name, direct URL, category, domain authority level and access type.',
+        'Forums, directories, social networks, Q&A, blogs, wikis, classifieds, podcasts, education, tech, finance, crypto and much more.',
+        'Professional PDF downloadable instantly. No waiting, no subscriptions. Yours forever with unlimited use license.',
+        'Each site tagged with authority level: High (DA 50+), Medium (DA 20-50) and Low. Prioritize the ones with the most impact.',
+        'Most sites are completely free or freemium. Maximize your ROI without spending on expensive outreach.',
+        'Includes Spanish-speaking platforms: Taringa, Forobeta, Meneame, Domestika and more to target the LATAM and Spain markets.'
+      ],
+      sectionTagPreview: 'Preview',
+      h2Preview: "A sample of what you'll <em>find</em>",
+      thCols: ['#','Site / Platform','URL','Category','Authority','Access'],
+      tdCats: ['Forum','Blog','Q&A','Social Network','Documents','Tech Blog','Tech/Startups','Bookmarks','Startups','LATAM Community','Documents','Newsletter','Academic','LATAM Marketing','Publications'],
+      badgeHigh: 'High', badgeMid: 'Medium', badgeFree: 'Free', badgeFreemium: 'Freemium',
+      tableBlur: '🔒 Unlock all 600 sites with full access',
+      btnUnlock: '🔓 SEE ALL 600 SITES →',
+      sectionTagCats: 'Included categories',
+      h2Cats: '<em>Full</em> niche coverage',
+      catNames: ['Forums & Communities','Web Directories','Social Networks','Q&A Platforms','Blogs & Articles','Business & B2B','Tech & Development','Crypto & Blockchain','Education & LMS','Ecommerce','LATAM & Spanish','Health & Wellness','Finance & Investment','Fashion & Lifestyle','Travel & Tourism','Press & PR','AI & Machine Learning','Gaming','Real Estate','Much more…'],
+      catSub: 'sites', catSubLast: 'additional categories',
+      sectionTagTesti: 'Testimonials',
+      h2Testi: 'What those already <em>ranking</em> say',
+      testiTexts: [
+        'I had been stuck on page 3 of Google for months. After using this list for 6 weeks, I moved into the top 5 for my 3 main keywords. A brutal investment.',
+        'I work as an SEO freelancer and this list saved me weeks of research. I use it with all my clients. The return is incredible compared to the price.',
+        'I thought it was another generic PDF but the sites are well curated and classified. My DA went from 8 to 31 in 3 months using only free sites from this list.'
+      ],
+      testiRoles: ['SEO Agency · Mexico City','SEO Freelancer · Spain','Blogger · Colombia'],
+      sectionTagPrice: 'Pricing',
+      h2Price: 'One investment, <em>results</em> forever',
+      priceTag: '☠ FULL ACCESS · ONE-TIME PAYMENT',
+      priceOld: 'Real value: $97 USD',
+      pricePeriod: 'USD · ONE-TIME PAYMENT · INSTANT DOWNLOAD',
+      priceFeats: [
+        'Complete list of 600+ verified sites',
+        '40+ well-organized categories',
+        'Domain authority level per site (DA)',
+        'Access type: free / freemium / paid',
+        'Spanish-language platforms for LATAM market',
+        'Professional PDF downloadable instantly',
+        '5 expert link building tips included',
+        'Lifetime access · No subscription'
+      ],
+      btnBuy: '☠ GET FULL ACCESS →',
+      priceGuarantee: '🔒 Secure payment via Payhip &nbsp;·&nbsp; <span style="color:var(--neon)">Instant download</span> &nbsp;·&nbsp; Lifetime access',
+      sectionTagFaq: 'Frequently asked questions',
+      h2Faq: 'Clear your <em>doubts</em>',
+      faqQs: [
+        'How do I receive the PDF after purchase?',
+        'Are the sites updated for 2026?',
+        'Does it work for any niche or industry?',
+        'Can I use this list for my clients?',
+        'Are these dofollow or nofollow backlinks?',
+        'What payment methods do you accept?'
+      ],
+      faqAs: [
+        'Immediately after payment you will receive access to the PDF download through Payhip. You will also receive an email with the permanent download link.',
+        'Yes. The list was curated and verified in 2026. It includes active and relevant platforms, with special attention to high domain authority sites that still accept user-generated content.',
+        'Absolutely. The list includes generalist platforms (Reddit, Quora, Medium) and specific niches (tech, finance, health, real estate, gaming, fashion, etc.). There are relevant sites for virtually any industry.',
+        'Yes, the license includes personal and professional use. You can use it in your own projects and in your clients SEO projects without limitations.',
+        'The list includes both types. Nofollow backlinks also have value for a natural link building strategy. The PDF includes tips to identify which ones prioritize dofollow.',
+        'Payment is processed through Payhip, which accepts credit/debit cards (Visa, Mastercard, Amex), PayPal and more. It is 100% secure with SSL encryption.'
+      ],
+      sectionTagCta: 'Last call',
+      h2Cta: 'Start <em>ranking</em> today',
+      ctaP: 'Every day that passes without backlinks is a day your competition gains an advantage. Get the 600 sites now and start today.',
+      btnFinal: '☠ DOWNLOAD FOR $27 →',
+      ctaNote: 'One-time payment · No subscription · Lifetime access',
+      footerCopy: '© 2026 Calaveracode · All rights reserved',
+      footerBuy: 'Buy', footerContact: 'Contact'
+    }
+  };
+
+  function setText(el, html) { if (el) el.innerHTML = html; }
+  function setTxt(el, txt) { if (el) el.textContent = txt; }
+
+  function applyLang(lang) {
+    const t = T[lang];
+    const d = document;
+    document.documentElement.lang = t.htmlLang;
+
+    // Button
+    const btnFlag = d.getElementById('lang-flag');
+    const btnLabel = d.getElementById('lang-label');
+    if (btnFlag) btnFlag.textContent = t.btnFlag;
+    if (btnLabel) btnLabel.textContent = t.btnLabel;
+
+    // NAV
+    const navCta = d.querySelector('.nav-cta');
+    if (navCta) navCta.textContent = t.navCta;
+
+    // HERO
+    const badge = d.querySelector('.badge');
+    if (badge) {
+      const dot = badge.querySelector('.badge-dot');
+      badge.textContent = t.badgeText;
+      if (dot) badge.prepend(dot);
+    }
+    const l1 = d.querySelector('h1 .line1'); if (l1) l1.textContent = t.h1Line1;
+    const l2 = d.querySelector('h1 .line2'); if (l2) l2.textContent = t.h1Line2;
+    const l3 = d.querySelector('h1 .line3'); if (l3) l3.textContent = t.h1Line3;
+    setText(d.querySelector('.hero-sub'), t.heroSub);
+    // hero button — keep arrow span
+    const heroBtnEl = d.querySelector('.hero-content .btn-primary');
+    if (heroBtnEl) {
+      const arr = heroBtnEl.querySelector('.btn-arrow');
+      heroBtnEl.textContent = t.heroBtnText + ' ';
+      if (arr) heroBtnEl.appendChild(arr);
+    }
+    setText(d.querySelector('.hero-note'), t.heroNote);
+
+    // STATS
+    const statLabels = d.querySelectorAll('.stat-label');
+    [t.statLabel1, t.statLabel2, t.statLabel3, t.statLabel4].forEach((v,i) => { if(statLabels[i]) statLabels[i].textContent = v; });
+
+    // PROBLEM section
+    const problemText = d.querySelector('.problem-text');
+    if (problemText) {
+      const stEl = problemText.querySelector('.section-tag');
+      if (stEl) { stEl.textContent = ''; stEl.appendChild(document.createTextNode(t.sectionTagProblem)); }
+      setText(problemText.querySelector('h2'), t.h2Problem);
+      const ps = problemText.querySelectorAll('p');
+      if (ps[0]) ps[0].textContent = t.problemP1;
+      if (ps[1]) ps[1].textContent = t.problemP2;
+      const pains = problemText.querySelectorAll('.pain-list li');
+      [t.pain1, t.pain2, t.pain3, t.pain4].forEach((v,i) => {
+        if (pains[i]) {
+          const icon = pains[i].querySelector('.pain-icon');
+          pains[i].textContent = v;
+          if (icon) pains[i].prepend(icon);
+        }
+      });
+    }
+
+    // Problem visual
+    const pv = d.querySelector('.problem-visual');
+    if (pv) {
+      const pvTag = pv.querySelector('.section-tag');
+      if (pvTag) { pvTag.textContent = ''; pvTag.appendChild(document.createTextNode(t.sectionTagNoBacklinks)); }
+      const rl = pv.querySelectorAll('.rank-label');
+      if (rl[0]) rl[0].textContent = t.rankPos;
+      if (rl[1]) rl[1].textContent = t.rankTraffic;
+      if (rl[2]) rl[2].textContent = t.rankAuth;
+      if (rl[3]) rl[3].textContent = t.rankPos;
+      if (rl[4]) rl[4].textContent = t.rankTraffic;
+      if (rl[5]) rl[5].textContent = t.rankAuth;
+      const rp = pv.querySelectorAll('.rank-pos');
+      if (rp[1]) rp[1].textContent = t.rankLow;
+      if (rp[4]) rp[4].textContent = t.rankHigh;
+      // the divider span
+      const divSpan = pv.querySelector('span[style*="background:var(--panel)"]');
+      if (divSpan) divSpan.textContent = t.with600;
+    }
+
+    // WHAT YOU GET
+    const wygSection = d.querySelector('section.section:not(.reveal)');
+    if (wygSection) {
+      const wTag = wygSection.querySelector('.section-tag');
+      if (wTag) { wTag.textContent = ''; wTag.appendChild(document.createTextNode(t.sectionTagGet)); }
+      setText(wygSection.querySelector('h2'), t.h2Get);
+      const fcards = wygSection.querySelectorAll('.feature-card');
+      fcards.forEach((card, i) => {
+        const ft = card.querySelector('.feature-title'); if (ft) ft.textContent = t.featTitles[i] || ft.textContent;
+        const fd = card.querySelector('.feature-desc'); if (fd) fd.textContent = t.featDescs[i] || fd.textContent;
+      });
+    }
+
+    // PREVIEW TABLE
+    const prevInner = d.querySelector('.preview-inner');
+    if (prevInner) {
+      const pTag = prevInner.querySelector('.section-tag');
+      if (pTag) { pTag.textContent = ''; pTag.appendChild(document.createTextNode(t.sectionTagPreview)); }
+      setText(prevInner.querySelector('h2'), t.h2Preview);
+      const ths = prevInner.querySelectorAll('thead th');
+      t.thCols.forEach((v,i) => { if(ths[i]) ths[i].textContent = v; });
+      const rows = prevInner.querySelectorAll('tbody tr');
+      rows.forEach((row, i) => {
+        const tds = row.querySelectorAll('td');
+        if (tds[3]) tds[3].textContent = t.tdCats[i] || tds[3].textContent;
+        const bh = tds[4] && tds[4].querySelector('.badge-high'); if (bh) bh.textContent = t.badgeHigh;
+        const bm = tds[4] && tds[4].querySelector('.badge-mid'); if (bm) bm.textContent = t.badgeMid;
+        const bf = tds[5] && tds[5].querySelector('.badge-free'); if (bf) bf.textContent = t.badgeFree;
+        const bfm = tds[5] && tds[5].querySelector('.badge-freemium'); if (bfm) bfm.textContent = t.badgeFreemium;
+      });
+      const prevBtn = prevInner.querySelector('a.btn-primary');
+      if (prevBtn) prevBtn.textContent = t.btnUnlock;
+    }
+
+    // CATEGORIES
+    const catSection = d.querySelector('section.section.reveal');
+    if (catSection) {
+      const cTag = catSection.querySelector('.section-tag');
+      if (cTag) { cTag.textContent = ''; cTag.appendChild(document.createTextNode(t.sectionTagCats)); }
+      setText(catSection.querySelector('h2'), t.h2Cats);
+      const catCards = catSection.querySelectorAll('.cat-card');
+      catCards.forEach((card, i) => {
+        const cn = card.querySelector('.cat-name'); if (cn) cn.textContent = t.catNames[i] || cn.textContent;
+        const cs = card.querySelector('.cat-sub'); if (cs) cs.textContent = (i === catCards.length - 1) ? t.catSubLast : t.catSub;
+      });
+    }
+
+    // TESTIMONIALS
+    const testiInner = d.querySelector('.testi-inner');
+    if (testiInner) {
+      const tTag = testiInner.querySelector('.section-tag');
+      if (tTag) { tTag.textContent = ''; tTag.appendChild(document.createTextNode(t.sectionTagTesti)); }
+      setText(testiInner.querySelector('h2'), t.h2Testi);
+      const tCards = testiInner.querySelectorAll('.testi-card');
+      tCards.forEach((card, i) => {
+        const tp = card.querySelector('.testi-text'); if (tp) tp.textContent = t.testiTexts[i];
+        const tr = card.querySelector('.testi-role'); if (tr) tr.textContent = t.testiRoles[i];
+      });
+    }
+
+    // PRICING
+    const pricingInner = d.querySelector('.pricing-inner');
+    if (pricingInner) {
+      const prTag = pricingInner.querySelector('.section-tag');
+      if (prTag) { prTag.textContent = ''; prTag.appendChild(document.createTextNode(t.sectionTagPrice)); }
+      setText(pricingInner.querySelector('h2'), t.h2Price);
+      const priceTagEl = pricingInner.querySelector('.price-tag'); if (priceTagEl) priceTagEl.textContent = t.priceTag;
+      const priceOldEl = pricingInner.querySelector('.price-old'); if (priceOldEl) priceOldEl.textContent = t.priceOld;
+      const pricePeriodEl = pricingInner.querySelector('.price-period'); if (pricePeriodEl) pricePeriodEl.textContent = t.pricePeriod;
+      const pfItems = pricingInner.querySelectorAll('.price-features li');
+      pfItems.forEach((li, i) => {
+        const chk = li.querySelector('.check');
+        li.textContent = t.priceFeats[i] || li.textContent;
+        if (chk) li.prepend(chk);
+      });
+      const btnBuyEl = pricingInner.querySelector('.btn-buy'); if (btnBuyEl) btnBuyEl.textContent = t.btnBuy;
+      setText(pricingInner.querySelector('.price-guarantee'), t.priceGuarantee);
+    }
+
+    // FAQ
+    const faqInner = d.querySelector('.faq-inner');
+    if (faqInner) {
+      const fTag = faqInner.querySelector('.section-tag');
+      if (fTag) { fTag.textContent = ''; fTag.appendChild(document.createTextNode(t.sectionTagFaq)); }
+      setText(faqInner.querySelector('h2'), t.h2Faq);
+      const fItems = faqInner.querySelectorAll('.faq-item');
+      fItems.forEach((item, i) => {
+        const fq = item.querySelector('.faq-q');
+        if (fq) {
+          const tog = fq.querySelector('.faq-toggle');
+          fq.textContent = t.faqQs[i] + ' ';
+          if (tog) fq.appendChild(tog);
+        }
+        const fa = item.querySelector('.faq-a'); if (fa) fa.textContent = t.faqAs[i];
+      });
+    }
+
+    // FINAL CTA
+    const finalCta = d.querySelector('.final-cta');
+    if (finalCta) {
+      const fcTag = finalCta.querySelector('.section-tag');
+      if (fcTag) fcTag.textContent = t.sectionTagCta;
+      setText(finalCta.querySelector('h2'), t.h2Cta);
+      const fcPs = finalCta.querySelectorAll('p');
+      if (fcPs[0]) fcPs[0].textContent = t.ctaP;
+      const fcBtn = finalCta.querySelector('a.btn-primary'); if (fcBtn) fcBtn.textContent = t.btnFinal;
+      if (fcPs[1]) fcPs[1].textContent = t.ctaNote;
+    }
+
+    // FOOTER
+    const footerCopyEl = d.querySelector('.footer-copy'); if (footerCopyEl) footerCopyEl.textContent = t.footerCopy;
+    const fLinks = d.querySelectorAll('.footer-links a');
+    if (fLinks[0]) fLinks[0].textContent = t.footerBuy;
+    if (fLinks[1]) fLinks[1].textContent = t.footerContact;
+
+    currentLang = lang;
+  }
+
+  function toggleLang() {
+    applyLang(currentLang === 'es' ? 'en' : 'es');
+  }
+
+</script>
+</body>
+</html>
